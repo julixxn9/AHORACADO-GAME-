@@ -1,0 +1,43 @@
+.ahorcado{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 40%;
+    height: 100%;
+}
+
+.ahorcado .avatar{
+    width: 90%;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.avatar .imagen{
+    width: 100%;
+    background-image: url('/ahorcado.png');
+    aspect-ratio: 1;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 145%;
+}
+
+.banco{
+    position: absolute;
+    width: 40%;
+    bottom: -7%;
+    right: 20%;
+    transition: right 0.5s ease; 
+}
+
+@media screen and (orientation: portrait) {
+    .ahorcado{
+        width: 100%;
+        height: 60%;
+    }
+    .avatar{
+        max-width: 10rem;
+    }
+}

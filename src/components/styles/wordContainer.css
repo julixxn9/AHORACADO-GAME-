@@ -1,0 +1,51 @@
+.container-palabra {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+  flex-wrap: wrap;
+}
+
+.container-palabra li {
+  list-style: none;
+  font-size: .1rem;
+  font-weight: bold;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 3px solid #333;
+  text-transform: uppercase;
+  transition: all 0.3s ease; /* transicion que hace que se expanda el cuadrado */
+  color: #222;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* Fixes para que el texto se vea realmente pequeño */
+  line-height: 1;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* Letra descubierta */
+.container-palabra li:not(:empty) {  /* :not(empty) es para que no se aplique a los elementos vacíos */
+  background-color: #d1ffd6;
+  border-color: #28a745;
+  color: #1a3e25;
+}
+
+
+@media screen and (orientation: portrait) {
+  .container-palabra {
+    width: 100%;
+    padding: 20px;
+    gap: 1rem;
+  }
+
+  .container-palabra li {
+    width: 1rem;
+    height: 1rem;
+    font-size: .5rem;
+  }
+}

@@ -1,0 +1,10 @@
+.container-palabra{
+    display: flex;
+    justify-content: center;
+    gap: 2vh;
+}
+
+.container-palabra li{
+    list-style: none;
+    font-size: 1.5rem;
+}
