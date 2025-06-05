@@ -1,10 +1,10 @@
 import "../styles/word.css";
 import { useEffect, useState } from "react";
 
-function Word() {
+function Word({configWordContainer}) {
 
-    const [letras, setLetra] = useState("smbpxi");
-    const [palabra, setPalabra] = useState("Sambapalosexinai");
+    const [letras, setLetra] = useState("una palabra muy larga");
+    const [palabra, setPalabra] = useState("una palabra muy larga");
      
     const [juego, setJuego] = useState([]);
 
@@ -12,19 +12,31 @@ function Word() {
         const estructura = palabra.split("").map((letra) => {
             return {
                 letra: letra.toLowerCase(),
-                conseguida: letras.includes(letra.toLowerCase())
+                conseguida: !(/[a-zA-Z]/.test(letra)) ||  letras.includes(letra.toLowerCase())
             };
         });
         setJuego(estructura);
-    }, []);
+        console.log(configWordContainer);
+    }, [configWordContainer]);
 
     return (
-    <ol className="container-palabra">
+    <ol className="container-palabra"
+      style={{
+        textTransform : 
+        configWordContainer == "AA" ? "uppercase" :
+        configWordContainer == "aa" ? "lowercase" : "none",
+      }}
+    >
       {juego.map((letra, index) => {
-        if (letra.letra === " ") return null; // ya no me dio mente
         return (
+          /[a-zA-Z]/.test(letra.letra) ?
           <li key={index}>
-            {letra.conseguida ? letra.letra : ""} {/* aqui es para que los li que no estan en la palabra no se muestren y en el css aparezca en blanco las letras que no estan en la palabra */}
+            {letra.conseguida? letra.letra : "\u00A0"}
+          </li>
+          :
+          letra.letra == " " ? "\u00A0\u00A0\u00A0" :
+          <li key={index}>
+            {letra.conseguida ? letra.letra : "\u00A0"} {/* aqui es para que los li que no estan en la palabra no se muestren y en el css aparezca en blanco las letras que no estan en la palabra */}
           </li>
         );
       })}

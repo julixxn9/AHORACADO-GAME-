@@ -9,36 +9,32 @@ function Teclado() {
     setPalabra(palabra + letra);
   };
 
-  const fila1 = ["W", "E", "R", "T", "Y", "U", "I", "O", "P"];
+  const fila1 = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
   const fila2 = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
   const fila3 = ["Z", "X", "C", "V", "B", "N", "M"];
 
   return (
     <div className="teclado-contenedor">
-      <div className="teclado-columnas">
-        <div className="teclado-grilla fila-1">
-          {fila1.map((letra, index) => (
-            <Tecla tecleo={textHandler} key={index}>
-              {letra}
-            </Tecla>
-          ))}
-        </div>
-
-        <div className="teclado-grilla fila-2">
-          {fila2.map((letra, index) => (
-            <Tecla tecleo={textHandler} key={index}>
-              {letra}
-            </Tecla>
-          ))}
-        </div>
-
-        <div className="teclado-grilla fila-3">
-          {fila3.map((letra, index) => (
-            <Tecla tecleo={textHandler} key={index}>
-              {letra}
-            </Tecla>
-          ))}
-        </div>
+      <div className="fila fila1">
+        {fila1.map((letra, index) => (
+          <Tecla tecleo={textHandler} key={index}>
+            {letra}
+          </Tecla>
+        ))}
+      </div>
+      <div className="fila fila2">
+        {fila2.map((letra, index) => (
+          <Tecla tecleo={textHandler} key={index}>
+            {letra}
+          </Tecla>
+        ))}
+      </div>
+      <div className="fila fila3">
+        {fila3.map((letra, index) => (
+          <Tecla tecleo={textHandler} key={index}>
+            {letra}
+          </Tecla>
+        ))}
       </div>
     </div>
   );

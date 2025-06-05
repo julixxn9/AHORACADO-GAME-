@@ -1,37 +1,45 @@
-/* Teclado.css */
-
 .teclado-contenedor {
+  background-color: #032612;
+  padding: 1rem;
+  border-radius: 0.75rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: 8vh;
-  text-align: center;
-  padding: 30px;
-  height: 50%;
-}
-
-.teclado-grilla {
-  display: grid;
-  gap: 10px;
-  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  max-width: 600px;
   margin: 0 auto;
-  grid-template-rows: auto;
+  box-sizing: border-box;
 }
 
-.fila-1 {
-  grid-template-columns: repeat(9, 1fr);
-}
-
-.fila-2 {
-  grid-template-columns: repeat(9, 1fr);
-}
-
-.fila-3 {
-  grid-template-columns: repeat(7, 1fr);
-}
-
-.teclado-columnas {
+/* Fila con distribución horizontal y separación */
+.fila {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+}
+
+.tecla:hover {
+  transform: scale(1.05);
+}
+
+/* 📱 Responsive para pantallas pequeñas (mobile portrait) */
+@media (max-width: 500px), (orientation: portrait) {
+  .teclado-contenedor {
+    padding: 0.5rem;
+    max-width: 95vw;
+  }
+
+  .fila {
+    gap: 0.3rem;
+  }
+
+  .tecla {
+    font-size: 0.85rem;
+    width: 2rem;
+    height: 2rem;
+  }
 }

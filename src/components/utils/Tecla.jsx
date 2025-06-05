@@ -5,7 +5,7 @@ function Tecla({ children, tecleo }) {
   const refButton = useRef(null);
 
   return (
-    <button
+    <button className="tecla"
     ref={refButton}
       onClick={() => {tecleo?.(children)
         refButton.current.setAttribute("disabled", true)
@@ -17,8 +17,10 @@ function Tecla({ children, tecleo }) {
       }
        } // tecleo?.(children) esto significa que si tecleo existe entonces ejecuta la función
       style={{
+        width : "47px",
         padding: "10px",
         fontSize: "1.2rem",
+        color: "#333",
         backgroundColor: "#eee",
         border: "1px solid #ccc",
         borderRadius: "5px",
