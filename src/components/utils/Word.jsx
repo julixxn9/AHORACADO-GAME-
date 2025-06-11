@@ -1,23 +1,23 @@
+import { ConfigContext } from "../../context/ConfigContext";
 import "../styles/word.css";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 function Word({configWordContainer}) {
 
-    const [letras, setLetra] = useState("una palabra muy larga");
-    const [palabra, setPalabra] = useState("una palabra muy larga");
-     
+    const {secreto, letras} = useContext(ConfigContext);
+
     const [juego, setJuego] = useState([]);
 
     useEffect(() => {
-        const estructura = palabra.split("").map((letra) => {
+        const estructura = secreto.split("").map((letra) => {
             return {
                 letra: letra.toLowerCase(),
-                conseguida: !(/[a-zA-Z]/.test(letra)) ||  letras.includes(letra.toLowerCase())
+                conseguida: !(/[a-zA-Z]/.test(letra)) ||  letras.toLowerCase().includes(letra.toLowerCase())
             };
         });
         setJuego(estructura);
-        console.log(configWordContainer);
-    }, [configWordContainer]);
+        console.log(letras);
+    }, [configWordContainer, letras, secreto]);
 
     return (
     <ol className="container-palabra"

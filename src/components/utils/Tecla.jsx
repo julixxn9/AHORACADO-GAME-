@@ -1,21 +1,37 @@
-import { useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
+import { ConfigContext } from "../../context/ConfigContext";
 
-function Tecla({ children, tecleo }) {
+function Tecla({ children }) {
 
-  const refButton = useRef(null);
+  const {letras, setLetras, secreto, chairHanlder} = useContext(ConfigContext)
+
+  
+  const refButton = useRef();
+  useEffect(()=>{
+    if(!letras){
+      refButton.current.removeAttribute("disabled")
+      refButton.current.style.backgroundColor = "#fff";
+      refButton.current.style.border= "none";
+    }
+  },[letras])
 
   return (
     <button className="tecla"
     ref={refButton}
-      onClick={() => {tecleo?.(children)
+      onClick={() => {
+        setLetras(letras + children) // aqui se agrega la letra al estado letras del context
+
+      if (!secreto.toLowerCase().includes(String(children).toLowerCase())){
+        chairHanlder()
+      } // si la letra que se presiona esta en el secreto
+
         refButton.current.setAttribute("disabled", true)
         // ahora si tiene ese etributo entonces las teclas cambiaran de color
         if (refButton.current.hasAttribute("disabled")) {
           refButton.current.style.backgroundColor = "#FF5F5D";
           refButton.current.style.border= "1px solid  #D96941";
         }
-      }
-       } // tecleo?.(children) esto significa que si tecleo existe entonces ejecuta la función
+       }}
       style={{
         width : "47px",
         padding: "10px",

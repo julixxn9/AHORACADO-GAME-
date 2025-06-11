@@ -1,6 +1,7 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './index.css';
+import ConfigContextProvaider from './context/ConfigContext.jsx';
 // import Contador from './components/test/contador.jsx'
 // import Teclado from './components/test/teclado.jsx';
 // import Focos from './components/test/Focos.jsx';
@@ -10,6 +11,8 @@ import App from './components/App.jsx';
 
 createRoot( document.getElementById('root') ).render(
   <StrictMode>
-    <App/>
+    <ConfigContextProvaider>
+    < App/>
+    </ConfigContextProvaider>
   </StrictMode>
 )

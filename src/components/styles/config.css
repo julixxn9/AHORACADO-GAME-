@@ -9,7 +9,7 @@
 
 .config-container img {
   width: 2rem;
-  filter: invert();
+  /* filter: invert(); */
   border-radius: 50%;
   color: white;
   transition: transform 0.5s ease-in-out;
